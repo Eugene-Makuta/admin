@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <style>
+        /* Add your CSS styling here */
+    </style>
+</head>
+<body>
+    <div class="slider">
+        <div class="slides">
+            
+            <img src="IMG_20231126_192143.webp" alt="Image 2">
+            <img src="WhatsApp Image me.jpg" alt="Image 3">
+            
+        </div>
+        <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="next" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+
+    <script>
+        // Add your JavaScript here
+    </script>
+</body>
+</html>
+
+
+/* Add your CSS styling here */
+
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slides img');
+
+function showSlide(index) {
+    slides.forEach((slide, i) => {
+        slide.style.display = (i === index) ? 'block' : 'none';
+    });
+}
+
+function moveSlide(direction) {
+    currentSlide = (currentSlide + direction + slides.length) % slides.length;
+    showSlide(currentSlide);
+}
+
+// Initialize the slider
+showSlide(currentSlide);
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Content Display</title>
+    <style>
+        /* Add your CSS styling here */
+    </style>
+</head>
+<body>
+    <button class="toggle-button">Show More</button>
+    <div class="content" style="display: none;">
+        <p>This is the additional content that can be toggled.</p>
+    </div>
+
+    <script>
+        const toggleButton = document.querySelector('.toggle-button');
+        const content = document.querySelector('.content');
+
+        toggleButton.addEventListener('click', () => {
+            const isVisible = content.style.display === 'block';
+            content.style.display = isVisible ? 'none' : 'block';
+            toggleButton.textContent = isVisible ? 'Show More' : 'Show Less';
+        });
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <style>
+        /* Add your CSS styling here */
+    </style>
+    <script>
+        function validateForm() {
+            const name = document.forms["contactForm"]["name"].value;
+            const email = document.forms["contactForm"]["email"].value;
+            const message = document.forms["contactForm"]["message"].value;
+            if (name === "" || email === "" || message === "") {
+                alert("All fields must be filled out");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <form name="contactForm" action="process_form.php" onsubmit="return validateForm()" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email"><br><br>
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message" rows="4" cols="50"></textarea><br><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
+
+
+<?php
+$servername = "localhost";
+$username = "username";
+$password = "password";
+$dbname = "database_name";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Prepare and bind
+$stmt = $conn->prepare("INSERT INTO contacts (name, email, message) VALUES (?, ?, ?)");
+$stmt->bind_param("sss", $name, $email, $message);
+
+// Set parameters and execute
+$name = $_POST['name'];
+$email = $_POST['email'];
+$message = $_POST['message'];
+$stmt->execute();
+
+echo "New records created successfully";
+
+$stmt->close();
+$conn->close();
+?>

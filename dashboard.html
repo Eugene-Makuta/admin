@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard - Shibuli Digital Electronics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="css/admin-styles.css" />
+</head>
+<body class="admin-body">
+
+  <!-- Admin Sidebar -->
+  <aside class="admin-sidebar">
+    <div class="sidebar-brand">
+      <i class="fas fa-bolt"></i>
+      <span>Shibuli Admin</span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item active">
+        <i class="fas fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="products.html" class="nav-item">
+        <i class="fas fa-box"></i>
+        <span>Products</span>
+      </a>
+      <a href="#" class="nav-item">
+        <i class="fas fa-shopping-cart"></i>
+        <span>Orders</span>
+      </a>
+      <a href="#" class="nav-item">
+        <i class="fas fa-users"></i>
+        <span>Customers</span>
+      </a>
+      <a href="#" class="nav-item">
+        <i class="fas fa-chart-line"></i>
+        <span>Analytics</span>
+      </a>
+      <a href="#" class="nav-item">
+        <i class="fas fa-cog"></i>
+        <span>Settings</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <button class="btn-logout" id="logout-btn">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </button>
+    </div>
+  </aside>
+
+  <!-- Admin Main Content -->
+  <main class="admin-main">
+    <!-- Top Bar -->
+    <header class="admin-topbar">
+      <div class="topbar-left">
+        <button class="sidebar-toggle" id="sidebar-toggle">
+          <i class="fas fa-bars"></i>
+        </button>
+        <h1>Dashboard</h1>
+      </div>
+      <div class="topbar-right">
+        <div class="admin-user">
+          <img src="https://via.placeholder.com/40" alt="Admin" class="user-avatar" />
+          <span class="user-name">Admin User</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div class="admin-content">
+      <div class="container">
+        <div class="dashboard-grid">
+          <!-- Stats Cards -->
+          <div class="stat-card">
+            <div class="stat-icon products">
+              <i class="fas fa-box"></i>
+            </div>
+            <div class="stat-info">
+              <h3 class="stat-value" id="total-products">--</h3>
+              <p class="stat-label">Total Products</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon orders">
+              <i class="fas fa-shopping-cart"></i>
+            </div>
+            <div class="stat-info">
+              <h3 class="stat-value" id="total-orders">--</h3>
+              <p class="stat-label">Total Orders</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon customers">
+              <i class="fas fa-users"></i>
+            </div>
+            <div class="stat-info">
+              <h3 class="stat-value" id="total-customers">--</h3>
+              <p class="stat-label">Total Customers</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon revenue">
+              <i class="fas fa-dollar-sign"></i>
+            </div>
+            <div class="stat-info">
+              <h3 class="stat-value" id="total-revenue">KSh --</h3>
+              <p class="stat-label">Total Revenue</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <section class="dashboard-section">
+          <div class="section-header">
+            <h2><i class="fas fa-lightning-bolt"></i> Quick Actions</h2>
+          </div>
+          <div class="quick-actions">
+            <a href="add-product.html" class="action-btn">
+              <i class="fas fa-plus-circle"></i>
+              <span>Add New Product</span>
+            </a>
+            <a href="products.html" class="action-btn">
+              <i class="fas fa-list"></i>
+              <span>Manage Products</span>
+            </a>
+            <a href="#" class="action-btn">
+              <i class="fas fa-receipt"></i>
+              <span>View Orders</span>
+            </a>
+            <a href="#" class="action-btn">
+              <i class="fas fa-chart-bar"></i>
+              <span>View Analytics</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- Recent Products -->
+        <section class="dashboard-section">
+          <div class="section-header">
+            <h2><i class="fas fa-history"></i> Recent Products</h2>
+            <a href="products.html" class="view-all-link">View All</a>
+          </div>
+          <div class="recent-products" id="recent-products">
+            <p class="empty-state">No products yet. <a href="add-product.html">Add your first product</a></p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

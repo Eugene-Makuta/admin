@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add Product - Shibuli Digital Electronics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="css/admin-styles.css" />
+</head>
+<body class="admin-body">
+
+  <!-- Admin Sidebar -->
+  <aside class="admin-sidebar">
+    <div class="sidebar-brand">
+      <i class="fas fa-bolt"></i>
+      <span>Shibuli Admin</span>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item">
+        <i class="fas fa-home"></i>
+        <span>Dashboard</span>
+      </a>
+      <a href="products.html" class="nav-item active">
+        <i class="fas fa-box"></i>
+        <span>Products</span>
+      </a>
+      <a href="#" class="nav-item">
+        <i class="fas fa-shopping-cart"></i>
+        <span>Orders</span>
+      </a>
+      <a href="#" class="nav-item">
+        <i class="fas fa-users"></i>
+        <span>Customers</span>
+      </a>
+      <a href="#" class="nav-item">
+        <i class="fas fa-chart-line"></i>
+        <span>Analytics</span>
+      </a>
+      <a href="#" class="nav-item">
+        <i class="fas fa-cog"></i>
+        <span>Settings</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <button class="btn-logout" id="logout-btn">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </button>
+    </div>
+  </aside>
+
+  <!-- Admin Main Content -->
+  <main class="admin-main">
+    <!-- Top Bar -->
+    <header class="admin-topbar">
+      <div class="topbar-left">
+        <button class="sidebar-toggle" id="sidebar-toggle">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="breadcrumb">
+          <a href="dashboard.html">Dashboard</a>
+          <span>/</span>
+          <a href="products.html">Products</a>
+          <span>/</span>
+          <span>Add Product</span>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div class="admin-user">
+          <img src="https://via.placeholder.com/40" alt="Admin" class="user-avatar" />
+          <span class="user-name">Admin User</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Add Product Content -->
+    <div class="admin-content">
+      <div class="container">
+        <div class="add-product-header">
+          <h2><i class="fas fa-plus-circle"></i> Add New Product</h2>
+          <p>Fill in the product details below</p>
+        </div>
+
+        <!-- Product Form -->
+        <form class="product-form" id="add-product-form">
+          <div class="form-grid">
+
+            <!-- Left Column -->
+            <div class="form-column">
+              <!-- Basic Information -->
+              <section class="form-section">
+                <h3 class="section-title"><i class="fas fa-info-circle"></i> Basic Information</h3>
+
+                <div class="form-group">
+                  <label for="product-name" class="required">Product Name</label>
+                  <input 
+                    type="text" 
+                    id="product-name" 
+                    name="productName" 
+                    placeholder="e.g., iPhone 15 Pro Max"
+                    required
+                  />
+                  <small class="form-hint">Name should be clear and descriptive</small>
+                </div>
+
+                <div class="form-group">
+                  <label for="product-category" class="required">Category</label>
+                  <select id="product-category" name="category" required>
+                    <option value="">Select a category</option>
+                    <option value="smartphones">Smartphones</option>
+                    <option value="laptops">Laptops</option>
+                    <option value="tvs">TVs</option>
+                    <option value="audio">Audio & Speakers</option>
+                    <option value="accessories">Accessories</option>
+                    <option value="gaming">Gaming Devices</option>
+                    <option value="wearables">Wearables</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="product-description" class="required">Description</label>
+                  <textarea 
+                    id="product-description" 
+                    name="description" 
+                    placeholder="Enter detailed product description..."
+                    rows="5"
+                    required
+                  ></textarea>
+                  <small class="form-hint"><span id="char-count">0</span>/500 characters</small>
+                </div>
+
+                <div class="form-group">
+                  <label for="product-sku">SKU / Product Code <span class="optional">(optional)</span></label>
+                  <input 
+                    type="text" 
+                    id="product-sku" 
+                    name="sku" 
+                    placeholder="e.g., SKU-12345"
+                  />
+                  <small class="form-hint">Leave empty for auto-generation</small>
+                </div>
+              </section>
+
+              <!-- Pricing -->
+              <section class="form-section">
+                <h3 class="section-title"><i class="fas fa-tag"></i> Pricing</h3>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="product-price" class="required">Price (KSh)</label>
+                    <div class="input-addon">
+                      <span class="addon">KSh</span>
+                      <input 
+                        type="number" 
+                        id="product-price" 
+                        name="price" 
+                        placeholder="0.00"
+                        min="0"
+                        step="0.01"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="product-discount-price">Discount Price (KSh) <span class="optional">(optional)</span></label>
+                    <div class="input-addon">
+                      <span class="addon">KSh</span>
+                      <input 
+                        type="number" 
+                        id="product-discount-price" 
+                        name="discountPrice" 
+                        placeholder="0.00"
+                        min="0"
+                        step="0.01"
+                      />
+                    </div>
+                    <small class="form-hint" id="discount-info"></small>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Stock & Status -->
+              <section class="form-section">
+                <h3 class="section-title"><i class="fas fa-warehouse"></i> Stock & Status</h3>
+
+                <div class="form-group">
+                  <label for="product-stock" class="required">Stock Quantity</label>
+                  <input 
+                    type="number" 
+                    id="product-stock" 
+                    name="stock" 
+                    placeholder="0"
+                    min="0"
+                    required
+                  />
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="product-status" class="required">Status</label>
+                    <select id="product-status" name="status" required>
+                      <option value="active">Active</option>
+                      <option value="hidden">Hidden</option>
+                      <option value="out-of-stock">Out of Stock</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="product-featured" class="required">Featured Product</label>
+                    <select id="product-featured" name="featured" required>
+                      <option value="no">No</option>
+                      <option value="yes">Yes</option>
+                    </select>
+                  </div>
+                </div>
+              </section>
+            </div>
+
+            <!-- Right Column -->
+            <div class="form-column">
+              <!-- Product Images -->
+              <section class="form-section">
+                <h3 class="section-title"><i class="fas fa-image"></i> Product Images</h3>
+
+                <div class="image-upload-area" id="image-upload-area">
+                  <input 
+                    type="file" 
+                    id="product-images" 
+                    name="images" 
+                    multiple
+                    accept="image/*"
+                    style="display: none"
+                  />
+                  <div class="upload-placeholder">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Drag and drop images here or <a href="#" class="upload-link">click to browse</a></p>
+                    <small>Supported formats: JPG, PNG, WebP (Max 5MB per image)</small>
+                  </div>
+                </div>
+
+                <div class="image-preview-grid" id="image-preview-grid">
+                  <!-- Image previews will be added here -->
+                </div>
+
+                <small class="form-hint">First image will be the main product image</small>
+              </section>
+
+              <!-- Additional Information -->
+              <section class="form-section">
+                <h3 class="section-title"><i class="fas fa-list"></i> Additional Information</h3>
+
+                <div class="form-group">
+                  <label for="product-brand">Brand</label>
+                  <select id="product-brand" name="brand">
+                    <option value="">Select Brand</option>
+                    <option value="apple">Apple</option>
+                    <option value="samsung">Samsung</option>
+                    <option value="lg">LG</option>
+                    <option value="sony">Sony</option>
+                    <option value="dell">Dell</option>
+                    <option value="hp">HP</option>
+                    <option value="lenovo">Lenovo</option>
+                    <option value="others">Others</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="product-color">Color</label>
+                  <input 
+                    type="text" 
+                    id="product-color" 
+                    name="color" 
+                    placeholder="e.g., Space Black, Silver"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="product-warranty">Warranty Period</label>
+                  <input 
+                    type="text" 
+                    id="product-warranty" 
+                    name="warranty" 
+                    placeholder="e.g., 2 Years"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="product-rating">Initial Rating</label>
+                  <div class="rating-input">
+                    <select id="product-rating" name="rating">
+                      <option value="5">★★★★★ - Excellent</option>
+                      <option value="4">★★★★☆ - Good</option>
+                      <option value="3">★★★☆☆ - Average</option>
+                      <option value="2">★★☆☆☆ - Poor</option>
+                      <option value="1">★☆☆☆☆ - Very Poor</option>
+                    </select>
+                  </div>
+                </div>
+              </section>
+
+              <!-- SEO -->
+              <section class="form-section">
+                <h3 class="section-title"><i class="fas fa-search"></i> SEO</h3>
+
+                <div class="form-group">
+                  <label for="product-slug">URL Slug</label>
+                  <input 
+                    type="text" 
+                    id="product-slug" 
+                    name="slug" 
+                    placeholder="e.g., iphone-15-pro-max"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="product-meta-desc">Meta Description</label>
+                  <textarea 
+                    id="product-meta-desc" 
+                    name="metaDescription" 
+                    placeholder="Brief description for search engines..."
+                    rows="3"
+                  ></textarea>
+                </div>
+              </section>
+            </div>
+          </div>
+
+          <!-- Form Actions -->
+          <div class="form-actions">
+            <button type="button" class="btn btn-secondary" onclick="history.back()">
+              <i class="fas fa-times"></i> Cancel
+            </button>
+            <button type="reset" class="btn btn-outline">
+              <i class="fas fa-redo"></i> Reset
+            </button>
+            <button type="submit" class="btn btn-primary btn-lg">
+              <i class="fas fa-check"></i> Add Product
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

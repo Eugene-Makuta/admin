@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Login - Shibuli Digital Electronics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="css/admin-styles.css" />
+</head>
+<body class="admin-body">
+
+  <div class="login-container">
+    <div class="login-box">
+      <div class="login-header">
+        <div class="login-logo">
+          <i class="fas fa-bolt"></i>
+          <span>Shibuli Admin</span>
+        </div>
+        <h1>Admin Login</h1>
+        <p>Access the admin dashboard to manage your store</p>
+      </div>
+
+      <form class="login-form" id="admin-login-form">
+        <div class="form-group">
+          <label for="username"><i class="fas fa-user"></i> Username or Email</label>
+          <input 
+            type="text" 
+            id="username" 
+            name="username" 
+            placeholder="Enter your username or email"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="password"><i class="fas fa-lock"></i> Password</label>
+          <div class="password-input-group">
+            <input 
+              type="password" 
+              id="password" 
+              name="password" 
+              placeholder="Enter your password"
+              required
+            />
+            <button type="button" class="toggle-password" aria-label="Toggle password visibility">
+              <i class="fas fa-eye"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="form-group checkbox">
+          <input type="checkbox" id="remember" name="remember" />
+          <label for="remember">Remember me</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block btn-lg">
+          <i class="fas fa-sign-in-alt"></i> Sign In
+        </button>
+
+        <div class="login-footer">
+          <p class="text-center">
+            <a href="#" class="forgot-password">Forgot password?</a>
+          </p>
+          <p class="demo-info">
+            <i class="fas fa-info-circle"></i>
+            Demo credentials: username: <strong>admin</strong> | password: <strong>password123</strong>
+          </p>
+        </div>
+      </form>
+
+      <div class="login-security">
+        <small><i class="fas fa-shield-halved"></i> Your login information is secured</small>
+      </div>
+    </div>
+
+    <div class="login-background">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+    </div>
+  </div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>
